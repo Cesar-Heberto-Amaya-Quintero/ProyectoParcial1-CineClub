@@ -21,32 +21,32 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg -tertiary menuColor">
-    <div class="container-fluid">
-        <h4 class="menuTitulo" >Filmedia</h4>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="navbar menu" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link menuTexto" aria-current="page" href="#"> Películas</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link menuTexto" href="#">Historial</a>
-                </li>
-                <li class="nav-item dropdown btnFondo">
-                    <a class="nav-link dropdown-toggle menuTexto" href="#" role="button" data-bs-toggle="dropdown" >
-                        <img src="/assets/avatar.png" alt="Logo" width="24" height="24" class="d-inline-block align-text-top">
-                        César
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
+            <div class="container-fluid">
+                <h4 class="menuTitulo" >Filmedia</h4>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar menu" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item" style= "padding-right: 10px;">
+                            <a class="nav-link menuTexto" aria-current="page" href="#"> <b>Películas</b> </a>
+                        </li>
+                        <li class="nav-item" style= "padding-right: 10px;">
+                            <a class="nav-link menuTexto activo" href="#"> <b>Historial</b> </a>
+                        </li>
+                        <li class="nav-item dropdown btnFondo" style= "padding-right: 10px;">
+                            <a class="nav-link dropdown-toggle menuTexto" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="/assets/avatar.png" alt="Logo" width="24" height="24" class="d-inline-block align-text-top">
+                                <b>César</b> 
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
+                            </ul>
+                        </li>
                     </ul>
-                </li>
-            </ul>
-        </div>
-    </div>
-    </nav>
+                </div>
+            </div>
+        </nav>
 
     <div class = "container-fluid contenido " >
         <div class="row"> 
