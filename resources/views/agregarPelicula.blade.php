@@ -43,7 +43,7 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
-                    </ul>
+                    </ul> 
                 </li>
             </ul>
         </div>

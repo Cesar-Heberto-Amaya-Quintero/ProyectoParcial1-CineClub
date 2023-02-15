@@ -8,7 +8,9 @@
   }
 
   .btnFondoColor{
-    background-color: #d7daf5;
+    /* background-color: #d7daf5; */
+    border-color: #d7daf5;
+    border: 2px solid;
   }
 
 
