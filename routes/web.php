@@ -20,3 +20,5 @@ Route::get('/menu', function () { return view('menu');});
 Route::get('/pelicula', function () { return view('pelicula');});
 
 Route::get('/historial', function () { return view('historial');});
+
+Route::get('/agregarPelicula', function () { return view('agregarPelicula');});
