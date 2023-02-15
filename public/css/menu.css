@@ -1,0 +1,60 @@
+.contenido {
+    margin: 10px auto ;
+}
+
+.menu {
+    text-align: right;
+    margin-right: 80px;
+  }
+
+.menuColor {
+    background-color: #0a0b18;
+}
+
+.menuTexto {
+    color: white;
+    font-size: 16px;
+}
+
+.menuTitulo {
+    color: white;
+    font-size: 30px;
+}
+
+.menuTexto:active {
+    color: white;
+}
+
+.menuTexto:visited {
+    color: white;
+}
+
+.menuTexto:hover {
+    color: white;
+}
+
+.btnFondo {
+    background-color: #302765;
+    border-radius: 20px;
+}
+
+.fotoPelicula {
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    border-radius: 20px;
+}
+
+.card {
+    height: 500px;
+    width: fit-content;
+    padding-bottom: 10px;
+    border:none;
+}
+
+.line-1 {
+    height: 5px;
+    width: 10%;
+    background: #0a0b18;
+    margin-bottom: 20px;
+  }
