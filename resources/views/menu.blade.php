@@ -66,7 +66,7 @@
         <div class="row row-cols-1 row-cols-md-6 " >
             <div class="col">
                 <div class="card h-100">
-                <img src="/assets/pelicula1.jpg" class="card-img-top fotoPelicula" alt="...">
+                <a href='{{route('pelicula')}}'> <img src="/assets/pelicula1.jpg" class="card-img-top fotoPelicula" alt="..."> </a>
 
                 </div>
             </div>
