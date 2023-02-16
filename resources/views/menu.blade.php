@@ -29,10 +29,10 @@
             <div class="navbar menu" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item" style= "padding-right: 10px;">
-                        <a class="nav-link menuTexto activo" aria-current="page" href="#"> <b>Películas</b> </a>
+                        <a class="nav-link menuTexto activo" aria-current="page" href='{{route('menu')}}' style="text-decoration: none;"> <b>Películas</b> </a>
                     </li>
                     <li class="nav-item" style= "padding-right: 10px;">
-                        <a class="nav-link menuTexto" href="#"> <b>Historial</b> </a>
+                        <a class="nav-link menuTexto"  href='{{route('historial')}}' style="text-decoration: none;"> <b>Historial</b> </a>
                     </li>
                     <li class="nav-item dropdown btnFondo" style= "padding-right: 10px;">
                         <a class="nav-link dropdown-toggle menuTexto" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -40,7 +40,7 @@
                             <b>César</b> 
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
+                            <li><a class="dropdown-item" href='{{route('inicio')}}' >Cerrar sesión</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -54,9 +54,9 @@
                 <h2> Acción </h2>
             </div>
             <div class="col" style="display: flex; align-items: center; justify-content: right;"> 
-                <span style="padding-right: 10px; "> <u>Agregar género</u> </span>
+                <a style="padding-right: 10px; text-decoration: none; color: #0a0b18; " href='{{route('generos')}}'> <u>Agregar género</u> </a>
                 <input type="" class="form-control"  placeholder="Buscar..." style="width: 50%; ">
-                <h2 style="padding-left: 10px;"> + </h2>
+                <h2 style="padding-left: 10px;"> <a href='{{route('agregarPelicula')}}' style="text-decoration: none; color: #0a0b18; "> + </a> </h2>
             </div>
 
         </div>

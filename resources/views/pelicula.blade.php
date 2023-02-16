@@ -22,33 +22,32 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg -tertiary menuColor">
-    <div class="container-fluid">
-        <h4 class="menuTitulo" >Filmedia</h4>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="navbar menu" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link menuTexto" aria-current="page" href="#"> Películas</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link menuTexto" href="#">Historial</a>
-                </li>
-                <li class="nav-item dropdown btnFondo">
-                    <a class="nav-link dropdown-toggle menuTexto" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="/assets/avatar.png" alt="Logo" width="24" height="24" class="d-inline-block align-text-top">
-                        César
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
-                    </ul>
-                </li>
-            </ul>
+        <div class="container-fluid">
+            <h4 class="menuTitulo" >Filmedia</h4>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar menu" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item" style= "padding-right: 10px;">
+                        <a class="nav-link menuTexto activo" aria-current="page" href='{{route('menu')}}' style="text-decoration: none;"> <b>Películas</b> </a>
+                    </li>
+                    <li class="nav-item" style= "padding-right: 10px;">
+                        <a class="nav-link menuTexto"  href='{{route('historial')}}' style="text-decoration: none;"> <b>Historial</b> </a>
+                    </li>
+                    <li class="nav-item dropdown btnFondo" style= "padding-right: 10px;">
+                        <a class="nav-link dropdown-toggle menuTexto" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="/assets/avatar.png" alt="Logo" width="24" height="24" class="d-inline-block align-text-top">
+                            <b>César</b> 
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href='{{route('inicio')}}'>Cerrar sesión</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </div>
     </nav>
-
     <!-- {{-- Contenido --}} -->
 
     <section class= "left-form"> 

@@ -13,6 +13,10 @@ body {
     height: 100vh;
 }
 
+a:link, a:visited {
+    text-decoration: none;
+}
+
 .left-form {
     width: 50%;
     height: 100vh;
