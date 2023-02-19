@@ -14,13 +14,13 @@
 .menuTexto {
     color: white;
     font-size: 16px;
-    font-family: "Roboto";
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .menuTitulo {
     color: white;
     font-size: 30px;
-    font-family: "Roseberry";
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .menuTexto:active {
