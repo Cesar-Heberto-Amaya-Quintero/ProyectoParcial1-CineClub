@@ -29,7 +29,7 @@
             <div class="navbar menu" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item" style= "padding-right: 10px;">
-                        <a class="nav-link menuTexto activo" aria-current="page" href='{{route('menu')}}' style="text-decoration: none;"> <b>Películas</b> </a>
+                        <a class="nav-link menuTexto activo" aria-current="page" href='{{route('peliculas.index')}}' style="text-decoration: none;"> <b>Películas</b> </a>
                     </li>
                     <li class="nav-item" style= "padding-right: 10px;">
                         <a class="nav-link menuTexto"  href='{{route('historial')}}' style="text-decoration: none;"> <b>Historial</b> </a>
@@ -54,7 +54,7 @@
                 <h2> Acción </h2>
             </div>
             <div class="col" style="display: flex; align-items: center; justify-content: right;"> 
-                <a style="padding-right: 10px; text-decoration: none; color: #0a0b18; " href='{{route('generos')}}'> <u>Agregar género</u> </a>
+                <a style="padding-right: 10px; text-decoration: none; color: #0a0b18; " href='{{route('generos.index')}}'> <u>Agregar género</u> </a>
                 <input type="" class="form-control"  placeholder="Buscar..." style="width: 50%; ">
                 <h2 style="padding-left: 10px;"> <a href='{{route('agregarPelicula')}}' style="text-decoration: none; color: #0a0b18; "> + </a> </h2>
             </div>
@@ -63,13 +63,18 @@
         
         <div class="line-1"></div>
 
-        <div class="row row-cols-1 row-cols-md-6 " >
-            <div class="col">
-                <div class="card h-100">
-                <a href='{{route('pelicula')}}'> <img src="/assets/pelicula1.jpg" class="card-img-top fotoPelicula" alt="..."> </a>
+        
 
+        <div class="row row-cols-1 row-cols-md-6 " >
+            @foreach ($peliculas as $pelicula)
+                <div class="col">
+                    <div class="card h-100">
+                    <a href='{{route('peliculas.pelicula', $pelicula->id)}}'> <img src="/assets/pelicula1.jpg" class="card-img-top fotoPelicula" alt="..."> </a>
+
+                    </div>
                 </div>
-            </div>
+            
+            @endforeach
             <div class="col">
                 <div class="card h-100">
                 <img src="/assets/pelicula2.jpg" class="card-img-top fotoPelicula" alt="...">

@@ -32,7 +32,7 @@
             <div class="navbar menu" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item" style= "padding-right: 10px;">
-                        <a class="nav-link menuTexto activo" aria-current="page" href='{{route('menu')}}' style="text-decoration: none;"> <b>Películas</b> </a>
+                        <a class="nav-link menuTexto activo" aria-current="page" href='{{route('peliculas.index')}}' style="text-decoration: none;"> <b>Películas</b> </a>
                     </li>
                     <li class="nav-item" style= "padding-right: 10px;">
                         <a class="nav-link menuTexto"  href='{{route('historial')}}' style="text-decoration: none;"> <b>Historial</b> </a>
@@ -54,60 +54,66 @@
     <!-- {{-- Contenido --}} -->
     <div class="contenidoForm" style="padding: 1%;">
 
-        <form>
-            <h1 class="textoo" >Géneros disponibles</h1>
+        <h1 class="textoo" >Géneros disponibles</h1>
 
-            <br>
+        <br>
 
-            <div class="row row-cols-1 row-cols-md-6" >
-                <div class="col">
-                    <button class="form-control mb-4 BtnGeneros" type="" placeholder=""> Acción</button>
-                </div>
 
-                <div class="col">
-                    <button class="form-control mb-4 BtnGeneros" type=""  placeholder="" > Drama</button>
-                </div>
+        <div class="row row-cols-1 row-cols-md-6" >
+            @foreach($generos as $genero)
+            <div class="col">
+                <button class="form-control mb-4 BtnGeneros" type="" placeholder="">{{$genero->nombre}}</button>
+            </div>
+            @endforeach
 
-                <div class="col">
-                    <button class="form-control mb-4 BtnGeneros" type=""   placeholder="" > Romance</button>
-                </div>
-
-                <div class="col">
-                    <button class="form-control mb-4 BtnGeneros" type=""    placeholder="" > Terror</button>
-                </div>
-
-                <div class="col">
-                    <button class="form-control mb-4 BtnGeneros" type=""   placeholder="" > Acción</button>
-                </div>
-
-                <div class="col">
-                    <button class="form-control mb-4 BtnGeneros" type=""   placeholder="" > Drama</button>
-                </div>
-
-                <div class="col">
-                    <button class="form-control mb-4 BtnGeneros" type=""  placeholder="" > Romance</button>
-                </div>
-
-                <div class="col">
-                    <button class="form-control mb-4 BtnGeneros" type=""  placeholder="" > Terror</button>
-                </div>
-
-                
+            {{-- <div class="col">
+                <button class="form-control mb-4 BtnGeneros" type="" placeholder=""> Acción</button>
             </div>
 
-            <br>
+            <div class="col">
+                <button class="form-control mb-4 BtnGeneros" type=""  placeholder="" > Drama</button>
+            </div>
 
-            <h2 class="textoo" >Agregar género</h2> 
-            <div class="line-3"></div>
+            <div class="col">
+                <button class="form-control mb-4 BtnGeneros" type=""   placeholder="" > Romance</button>
+            </div>
+
+            <div class="col">
+                <button class="form-control mb-4 BtnGeneros" type=""    placeholder="" > Terror</button>
+            </div>
+
+            <div class="col">
+                <button class="form-control mb-4 BtnGeneros" type=""   placeholder="" > Acción</button>
+            </div>
+
+            <div class="col">
+                <button class="form-control mb-4 BtnGeneros" type=""   placeholder="" > Drama</button>
+            </div>
+
+            <div class="col">
+                <button class="form-control mb-4 BtnGeneros" type=""  placeholder="" > Romance</button>
+            </div>
+
+            <div class="col">
+                <button class="form-control mb-4 BtnGeneros" type=""  placeholder="" > Terror</button>
+            </div> --}}
 
             
+        </div>
 
+        <br>
+
+        <h2 class="textoo" >Agregar género</h2> 
+        <div class="line-3"></div>
+
+        <form action="{{route('generos.store')}}" method="POST">
+        @csrf
             <div class="col" style="display: flex; align-items: center;"> 
-                <input class="form-control btnFondoColor" type="" class="mb-3"  placeholder="Nombre del género..." style="width: 30%; margin-right: 1%;">
-                <button type="" class="btn boton2"  style="width: 15%; ">Agregar</button>
+                <input class="form-control btnFondoColor mb-3" type="text" name="nombre"  placeholder="Nombre del género..." style="width: 30%; margin-right: 1%;">
+                <button type="submit" class="btn boton2"  style="width: 15%; ">Agregar</button>
             </div>
-
         </form>
+
     </div>
     
 

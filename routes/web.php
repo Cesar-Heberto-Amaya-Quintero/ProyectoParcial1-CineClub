@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\GenerosController;
+use App\Http\Controllers\PeliculasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {return view('index'); })->name('inicio');;
 
-Route::get('/menu', function () { return view('menu');})->name('menu');;
+// Route::get('/menu', function () { return view('menu');})->name('menu');;
 
 Route::get('/pelicula', function () { return view('pelicula');})->name('pelicula');;
 
@@ -23,4 +25,12 @@ Route::get('/historial', function () { return view('historial');})->name('histor
 
 Route::get('/agregarPelicula', function () { return view('agregarPelicula');})->name('agregarPelicula');;
 
-Route::get('/generos', function () { return view('generos');})->name('generos');;
+// Route::get('/generos', function () { return view('generos');})->name('generos');
+
+//Peliculas
+Route::get('/peliculas', [PeliculasController::class, 'index'])->name('peliculas.index');
+Route::get('/pelicula/{id}', [PeliculasController::class, 'pelicula'])->name('peliculas.pelicula');
+
+//Generos
+Route::get('/generos', [GenerosController::class, 'index'])->name('generos.index');
+Route::post('/generos', [GenerosController::class, 'store'])->name('generos.store');

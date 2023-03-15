@@ -30,7 +30,7 @@
             <div class="navbar menu" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item" style= "padding-right: 10px;">
-                        <a class="nav-link menuTexto activo" aria-current="page" href='{{route('menu')}}' style="text-decoration: none;"> <b>Películas</b> </a>
+                        <a class="nav-link menuTexto activo" aria-current="page" href='{{route('peliculas.index')}}' style="text-decoration: none;"> <b>Películas</b> </a>
                     </li>
                     <li class="nav-item" style= "padding-right: 10px;">
                         <a class="nav-link menuTexto"  href='{{route('historial')}}' style="text-decoration: none;"> <b>Historial</b> </a>
@@ -60,14 +60,14 @@
     
 
     <section class= "right-form ">
-        <h1 class="texto titulo">Shang Chi (2021)  </h1>
+        <h1 class="texto titulo">{{$pelicula->titulo}} {{$pelicula->ano}}   </h1>
         <div class="descripcion">
-            <span class="mb-4 descripcion" >Shang Chi debe enfrentar a su pasado cuando se ve envuelto en la red de la misteriosa organización de los Diez Anillos. </span>
+            <span class="mb-4 descripcion" >{{$pelicula->descripcion}} </span>
         </div>
 
         <br>
 
-        <h5> <b>Director:</b> Destin Daniel Cretton.</h5>
+        <h5> <b>Director:</b> {{$pelicula->genero}}</h5>
 
         <h5> <b>Géneros:</b>  Acción, Fantasía. </h5>
 

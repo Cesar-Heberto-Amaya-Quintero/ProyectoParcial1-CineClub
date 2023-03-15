@@ -29,7 +29,7 @@
             <div class="navbar menu" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item" style= "padding-right: 10px;">
-                        <a class="nav-link menuTexto" aria-current="page" href='{{route('menu')}}' style="text-decoration: none;"> <b>Películas</b> </a>
+                        <a class="nav-link menuTexto" aria-current="page" href='{{route('peliculas.index')}}' style="text-decoration: none;"> <b>Películas</b> </a>
                     </li>
                     <li class="nav-item" style= "padding-right: 10px;">
                         <a class="nav-link menuTexto activo"  href='{{route('historial')}}' style="text-decoration: none;"> <b>Historial</b> </a>

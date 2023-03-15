@@ -26,7 +26,7 @@
                         <input type="email" class="form mb-3"  placeholder="">
 
                         <div class="text-center">
-                            <button type="button" class="btn boton" style="width:50%;" href='#'> <a href='{{route('menu')}}' style="text-decoration: none; color: white;">Iniciar sesión</a></button> 
+                            <button type="button" class="btn boton" style="width:50%;" href='#'> <a href='{{route('peliculas.index')}}' style="text-decoration: none; color: white;">Iniciar sesión</a></button> 
                         </div>
                         
                     </div>
