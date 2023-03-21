@@ -56,7 +56,7 @@
             <div class="col" style="display: flex; align-items: center; justify-content: right;"> 
                 <a style="padding-right: 10px; text-decoration: none; color: #0a0b18; " href='{{route('generos.index')}}'> <u>Agregar género</u> </a>
                 <input type="" class="form-control"  placeholder="Buscar..." style="width: 50%; ">
-                <h2 style="padding-left: 10px;"> <a href='{{route('agregarPelicula')}}' style="text-decoration: none; color: #0a0b18; "> + </a> </h2>
+                <h2 style="padding-left: 10px;"> <a href='{{route('peliculas.create')}}' style="text-decoration: none; color: #0a0b18; "> + </a> </h2>
             </div>
 
         </div>

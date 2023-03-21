@@ -32,7 +32,7 @@
             <div class="navbar menu" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item" style= "padding-right: 10px;">
-                        <a class="nav-link menuTexto activo" aria-current="page" href='{{route('menu')}}' style="text-decoration: none;"> <b>Películas</b> </a>
+                        <a class="nav-link menuTexto activo" aria-current="page" href='{{route('peliculas.index')}}' style="text-decoration: none;"> <b>Películas</b> </a>
                     </li>
                     <li class="nav-item" style= "padding-right: 10px;">
                         <a class="nav-link menuTexto"  href='{{route('historial')}}' style="text-decoration: none;"> <b>Historial</b> </a>
@@ -54,24 +54,25 @@
     <!-- {{-- Contenido --}} -->
     <div class="contenidoForm" style="padding: 1%;">
 
-        <form>
+        <form method="POST" href="{{route('peliculas.store')}}">
+            @csrf
             <h1 class="texto" >Agregar Pelicula</h1>
             <div class="line-3"></div>
 
             <div class="row row-cols-1 row-cols-md-3" >
                 <div class="col">
                     <label  class="form-label texto fuenteFormulario">Titulo</label>
-                    <input class="form-control btnFondoColor" type="" class="mb-3"  placeholder="">
+                    <input class="form-control btnFondoColor" type="text" class="mb-3"  placeholder="" name="titulo">
                 </div>
 
                 <div class="col">
                     <label  class="form-label texto fuenteFormulario">Director</label>
-                    <input class="form-control btnFondoColor" type="" class="mb-3"  placeholder="">
+                    <input class="form-control btnFondoColor" type="text" class="mb-3"  placeholder="" name="director">
                 </div>
 
                 <div class="col">
                     <label  class="form-label texto fuenteFormulario">Año</label>
-                    <input  class="form-control btnFondoColor" type="" class="mb-3"  placeholder="">
+                    <input  class="form-control btnFondoColor" type="text" class="mb-3"  placeholder="" name="ano">
                 </div>
             </div>
 
@@ -80,7 +81,7 @@
             <div class="row row-cols-1 row-cols-md-2 " >
                 <div class="col">
                     <label  class="form-label texto fuenteFormulario">Descripcion</label>
-                    <textarea class="form-control btnFondoColor"  class="mb-3"  rows="5"> </textarea>
+                    <textarea class="form-control btnFondoColor"  class="mb-3"  rows="5" name="descripcion"> </textarea>
                 </div>
 
                 <div class="col">
@@ -90,22 +91,12 @@
 
                     <div class="row">
                         <div class="col">
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input btnFondoColor" type="checkbox" id="inlineCheckbox1" value="option1">
-                                <label class="form-check-label" for="inlineCheckbox1">Acción</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input btnFondoColor" type="checkbox" id="inlineCheckbox2" value="option2">
-                                <label class="form-check-label" for="inlineCheckbox2">Drama</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input btnFondoColor" type="checkbox" id="inlineCheckbox3" value="option3">
-                                <label class="form-check-label" for="inlineCheckbox3">Romance</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input btnFondoColor" type="checkbox" id="inlineCheckbox3" value="option3">
-                                <label class="form-check-label" for="inlineCheckbox3">Terror</label>
-                            </div>
+                            @foreach ($generos as $genero)
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input btnFondoColor" type="checkbox" id="inlineCheckbox1" value="{{$genero->id}}">
+                                    <label class="form-check-label" for="inlineCheckbox1">{{$genero->nombre}}</label>
+                                </div>
+                            @endforeach
                         </div>
 
                     </div>
@@ -118,13 +109,13 @@
 
             <div class="mb-3">
                 <label for="formFile" class="form-label texto fuenteFormulario">Poster</label>
-                <input class="form-control " type="file" id="formFile" style="width: 30%;">
+                <input class="form-control " type="file" id="formFile" style="width: 30%;" name="poster">
               </div>
 
             <br>
 
             <div class="">
-                <button type="button" class="btn boton2" style="width:20%; font-size: 1.5rem;" >Agregar</button> 
+                <button type="submit" class="btn boton2" style="width:20%; font-size: 1.5rem;" >Agregar</button> 
             </div>
 
         </form>

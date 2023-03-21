@@ -19,4 +19,30 @@ class PeliculasController extends Controller
         $argumentos['pelicula'] = $pelicula;
         return view("pelicula", $argumentos);
     }
+
+    public function create(){
+        $generos = Genero::all();
+        $argumentos['generos'] = $generos;
+        return view("agregarPelicula", $argumentos);
+    }
+
+    public function store(Request $request){
+
+        $nuevaPelicula = new Pelicula();
+        
+        $nuevaPelicula->titulo = $request->input('titulo');
+        $nuevaPelicula->director = $request->input('director');
+        $nuevaPelicula->ano = $request->input('ano');
+        $nuevaPelicula->descripcion = $request->input('descripcion');
+        $nuevaPelicula->duracion_minutos = 100;
+
+        if($request->hasFile('poster')){
+            $path = $request->file('poster')->store('public/posters');
+            $nuevaPelicula->poster = $request->file('poster')->hashName();
+        }
+
+        $nuevaPelicula->save();
+
+        return redirect()->route('peliculas.index');
+    }
 }

@@ -30,6 +30,8 @@ Route::get('/agregarPelicula', function () { return view('agregarPelicula');})->
 //Peliculas
 Route::get('/peliculas', [PeliculasController::class, 'index'])->name('peliculas.index');
 Route::get('/pelicula/{id}', [PeliculasController::class, 'pelicula'])->name('peliculas.pelicula');
+Route::get('/peliculas/create', [PeliculasController::class, 'create'])->name('peliculas.create');
+Route::post('/peliculas/create', [PeliculasController::class, 'store'])->name('peliculas.store');
 
 //Generos
 Route::get('/generos', [GenerosController::class, 'index'])->name('generos.index');
