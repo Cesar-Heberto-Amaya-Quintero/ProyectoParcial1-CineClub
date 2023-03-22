@@ -54,7 +54,7 @@
     <!-- {{-- Contenido --}} -->
     <div class="contenidoForm" style="padding: 1%;">
 
-        <form method="POST" href="{{route('peliculas.store')}}">
+        <form method="POST" href="{{route('peliculas.store')}}" enctype="multipart/form-data">
             @csrf
             <h1 class="texto" >Agregar Pelicula</h1>
             <div class="line-3"></div>
@@ -93,7 +93,7 @@
                         <div class="col">
                             @foreach ($generos as $genero)
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input btnFondoColor" type="checkbox" id="inlineCheckbox1" value="{{$genero->id}}">
+                                    <input class="form-check-input btnFondoColor" type="checkbox" id="inlineCheckbox1" value="{{$genero->id}}" name="generos[]">
                                     <label class="form-check-label" for="inlineCheckbox1">{{$genero->nombre}}</label>
                                 </div>
                             @endforeach

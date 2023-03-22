@@ -69,7 +69,7 @@
             @foreach ($peliculas as $pelicula)
                 <div class="col">
                     <div class="card h-100">
-                    <a href='{{route('peliculas.pelicula', $pelicula->id)}}'> <img src="/assets/pelicula1.jpg" class="card-img-top fotoPelicula" alt="..."> </a>
+                    <a href='{{route('peliculas.pelicula', $pelicula->id)}}'> <img src="/storage/posters/{{$pelicula->poster}}" class="card-img-top fotoPelicula" alt="..."> </a>
 
                     </div>
                 </div>

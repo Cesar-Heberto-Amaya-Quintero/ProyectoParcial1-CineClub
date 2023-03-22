@@ -67,9 +67,9 @@
 
         <br>
 
-        <h5> <b>Director:</b> {{$pelicula->genero}}</h5>
+        <h5> <b>Director:</b> {{$pelicula->director}}</h5>
 
-        <h5> <b>Géneros:</b>  Acción, Fantasía. </h5>
+        <h5> <b>Géneros:</b>  {{$pelicula->generos}} </h5>
 
         <br>
 

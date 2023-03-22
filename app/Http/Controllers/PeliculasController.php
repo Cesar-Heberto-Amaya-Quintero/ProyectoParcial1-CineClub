@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Pelicula;
 use App\Models\Genero;
+use App\Models\GeneroPelicula;
 
 class PeliculasController extends Controller
 {
@@ -16,6 +17,13 @@ class PeliculasController extends Controller
 
     public function pelicula($id){
         $pelicula = Pelicula::find($id);
+        $generosPelicula = GeneroPelicula::where('id_pelicula', $id)->pluck('id_genero');
+        $pelicula->generos = "";
+        foreach($generosPelicula as $generoPelicula)
+        {
+            $genero = Genero::find($generoPelicula);
+            $pelicula->generos .= $genero->nombre . ", ";
+        }
         $argumentos['pelicula'] = $pelicula;
         return view("pelicula", $argumentos);
     }
@@ -34,6 +42,7 @@ class PeliculasController extends Controller
         $nuevaPelicula->director = $request->input('director');
         $nuevaPelicula->ano = $request->input('ano');
         $nuevaPelicula->descripcion = $request->input('descripcion');
+
         $nuevaPelicula->duracion_minutos = 100;
 
         if($request->hasFile('poster')){
@@ -42,6 +51,17 @@ class PeliculasController extends Controller
         }
 
         $nuevaPelicula->save();
+
+        $generos = $request->input('generos');
+        foreach ($generos as $genero)
+        {
+            
+            $nuevoGeneroPelicula = new GeneroPelicula();
+            $nuevoGeneroPelicula->id_genero = $genero;
+            $nuevoGeneroPelicula->id_pelicula = $nuevaPelicula->id;
+
+            $nuevoGeneroPelicula->save();
+        }
 
         return redirect()->route('peliculas.index');
     }
