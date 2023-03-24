@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="/css/menu.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="/css/pelicula.css" media="screen" /> 
+    <link rel="stylesheet" type="text/css" href="/css/pelicula.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/css/agregarPelicula.css" media="screen" /> 
 
     {{-- Importados --}}
         
@@ -21,6 +22,7 @@
     <title>Pelicula</title>
 </head>
 <body>
+
     <nav class="navbar navbar-expand-lg -tertiary menuColor">
         <div class="container-fluid">
             <h4 class="menuTitulo" >Filmedia</h4>
@@ -48,67 +50,77 @@
             </div>
         </div>
     </nav>
+
     <!-- {{-- Contenido --}} -->
+    <div class="contenidoForm" style="padding: 1%;">
 
-    <section class= "left-form"> 
+        <form method="POST" href="" enctype="multipart/form-data">
+            @csrf
+            <h1 class="texto" >Editar Pelicula</h1>
+            <div class="line-3"></div>
 
-            <div class="imagen">
-                <img src="/assets/pelicula1.jpg" class="card-img-top pelicula" alt="...">
-            </div>
-
-    </section>
-    
-
-    <section class= "right-form ">
-        <h1 class="texto titulo">{{$pelicula->titulo}} {{$pelicula->ano}}   </h1>
-        <div class="descripcion">
-            <span class="mb-4 descripcion" >{{$pelicula->descripcion}} </span>
-        </div>
-
-        <br>
-
-        <h5> <b>Director:</b> {{$pelicula->director}}</h5>
-
-        <h5> <b>Géneros:</b>  {{$pelicula->generos}} </h5>
-
-        <br>
-
-        <div class="">
-            <button type="button" class="btn boton2" style="width:20%;" > <a href="{{route('peliculas.edit', $pelicula->id)}} " style="text-decoration: none; color: #fff; "> Editar pelicula </a></button> 
-        </div>
-
-        <br>
-
-        <form>
-            <h1 class="texto">Establecer función</h1>
-            <div class="line-2"></div>
-
-            <div class="row row-cols-1 row-cols-md-3 formulario" >
+            <div class="row row-cols-1 row-cols-md-3" >
                 <div class="col">
-                    <label  class="form-label texto fuenteLabel">Sala</label>
-                    <input type="" class="mb-3"  placeholder="">
+                    <label  class="form-label texto fuenteFormulario">Titulo</label>
+                    <input class="form-control btnFondoColor" type="text" class="mb-3"  placeholder="" name="titulo">
                 </div>
 
                 <div class="col">
-                    <label  class="form-label texto fuenteLabel">Fecha</label>
-                    <input type="date" class="mb-3"  placeholder="">
+                    <label  class="form-label texto fuenteFormulario">Director</label>
+                    <input class="form-control btnFondoColor" type="text" class="mb-3"  placeholder="" name="director">
                 </div>
 
                 <div class="col">
-                    <label  class="form-label texto fuenteLabel">Hora</label>
-                    <input type="datetime" class="mb-3"  placeholder="">
+                    <label  class="form-label texto fuenteFormulario">Año</label>
+                    <input  class="form-control btnFondoColor" type="text" class="mb-3"  placeholder="" name="ano">
                 </div>
             </div>
 
             <br>
 
+            <div class="row row-cols-1 row-cols-md-2 " >
+                <div class="col">
+                    <label  class="form-label texto fuenteFormulario">Descripcion</label>
+                    <textarea class="form-control btnFondoColor"  class="mb-3"  rows="5" name="descripcion"> </textarea>
+                </div>
+
+                <div class="col">
+                    <div class="row">
+                        <label  class="form-label texto fuenteFormulario">Género</label>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            @foreach ($generos as $genero)
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input btnFondoColor" type="checkbox" id="inlineCheckbox1" value="{{$genero->id}}" name="generos[]">
+                                    <label class="form-check-label" for="inlineCheckbox1">{{$genero->nombre}}</label>
+                                </div>
+                            @endforeach
+                        </div>
+
+                    </div>
+      
+                </div>
+
+            </div>
+
+            <br>
+
+            <div class="mb-3">
+                <label for="formFile" class="form-label texto fuenteFormulario">Poster</label>
+                <input class="form-control " type="file" id="formFile" style="width: 30%;" name="poster">
+              </div>
+
+            <br>
+
             <div class="">
-                <button type="button" class="btn boton2" style="width:30%;" > Establecer función</button> 
+                <button type="submit" class="btn boton2" style="width:20%; font-size: 1.5rem;" >Editar</button> 
             </div>
 
         </form>
-    </section>
-
+    </div>
+    
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 

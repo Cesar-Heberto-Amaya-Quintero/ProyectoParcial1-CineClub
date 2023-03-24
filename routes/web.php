@@ -32,6 +32,8 @@ Route::get('/peliculas', [PeliculasController::class, 'index'])->name('peliculas
 Route::get('/pelicula/{id}', [PeliculasController::class, 'pelicula'])->name('peliculas.pelicula');
 Route::get('/peliculas/create', [PeliculasController::class, 'create'])->name('peliculas.create');
 Route::post('/peliculas/create', [PeliculasController::class, 'store'])->name('peliculas.store');
+Route::get('/peliculas/{id}/edit', [PeliculasController::class, 'edit'])->name('peliculas.edit');
+Route::put('/peliculas/{id}', [PeliculasController::class, 'update'])->name('pelliculas.update');
 
 //Generos
 Route::get('/generos', [GenerosController::class, 'index'])->name('generos.index');

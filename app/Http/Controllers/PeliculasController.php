@@ -65,4 +65,13 @@ class PeliculasController extends Controller
 
         return redirect()->route('peliculas.index');
     }
+
+    public function edit($id) {
+        $pelicula = Pelicula::find($id);
+        $generos = Genero::all();
+        
+        $argumentos['generos'] = $generos;
+        $argumentos['pelicula'] = $pelicula;
+        return view('editarPelicula', $argumentos);
+    }
 }
