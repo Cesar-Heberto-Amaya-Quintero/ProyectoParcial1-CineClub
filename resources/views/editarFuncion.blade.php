@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="/css/menu.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="/css/pelicula.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="/css/agregarPelicula.css" media="screen" /> 
+    <link rel="stylesheet" type="text/css" href="/css/pelicula.css" media="screen" /> 
 
     {{-- Importados --}}
         
@@ -22,7 +21,6 @@
     <title>Pelicula</title>
 </head>
 <body>
-
     <nav class="navbar navbar-expand-lg -tertiary menuColor">
         <div class="container-fluid">
             <h4 class="menuTitulo" >Filmedia</h4>
@@ -52,79 +50,52 @@
             </div>
         </div>
     </nav>
-
     <!-- {{-- Contenido --}} -->
-    <div class="contenidoForm" style="padding: 1%;">
 
-        <div class="">
-                <button type="" class="btn boton2" style="width:10%; font-size: 1rem; float: right;"> <a href="{{route('peliculas.pelicula', $pelicula->id)}}" style="text-decoration: none; color: #fff; "> Volver </a></button> 
-        </div>
+    <section class= "left-form"> 
 
-        <form method="POST" href="{{route('peliculas.update', $pelicula->id)}}" enctype="multipart/form-data">
+            <div class="imagen">
+                <img src="/storage/posters/{{$pelicula->poster}}" class="card-img-top pelicula" alt="...">
+            </div>
+
+    </section>
+
+        <section class= "right-form ">
+
+        <br>
+        <br>
+
+        <form method="POST" href="{{route('funciones.update',$pelicula->id)}}" enctype="multipart/form-data">
             @csrf
-            @method('PUT')
-            <h1 class="texto" >Editar Pelicula</h1>
-            <div class="line-3"></div>
+            <h1 class="texto">Editar función</h1>
+            <div class="line-2"></div>
 
-
-            @if(Session::has('exito'))
-                <h5> <b> {{Session::get('exito')}} </b> </h5>
-            @endif
-
-            <div class="row row-cols-1 row-cols-md-3" >
+            <div class="row row-cols-1 row-cols-md-3 formulario" >
                 <div class="col">
-                    <label  class="form-label texto fuenteFormulario">Titulo</label>
-                    <input class="form-control btnFondoColor" type="text" class="mb-3"  placeholder="" name="titulo" value="{{$pelicula->titulo}}"> 
+                    <label  class="form-label texto fuenteLabel">Sala</label>
+                    <input type="" class="mb-3"  placeholder="" name="sala" value="{{$funcion->sala}}">
                 </div>
 
                 <div class="col">
-                    <label  class="form-label texto fuenteFormulario">Director</label>
-                    <input class="form-control btnFondoColor" type="text" class="mb-3"  value="{{$pelicula->director}}" name="director">
+                    <label  class="form-label texto fuenteLabel">Fecha</label>
+                    <input type="date" class="mb-3"  placeholder="" name="fecha" value="{{$funcion->fecha}}">
                 </div>
 
                 <div class="col">
-                    <label  class="form-label texto fuenteFormulario">Año</label>
-                    <input  class="form-control btnFondoColor" type="text" class="mb-3"  value="{{$pelicula->ano}}" name="ano">
+                    <label  class="form-label texto fuenteLabel">Hora</label>
+                    <input type="datetime" class="mb-3"  placeholder="" name="hora" value="{{$funcion->hora}}">
                 </div>
             </div>
-
-            <br>
-
-            <div class="row row-cols-1 row-cols-md-2 " >
-                <div class="col">
-                    <label  class="form-label texto fuenteFormulario">Descripcion</label>
-                    <textarea class="form-control btnFondoColor"  class="mb-3"  rows="5" name="descripcion"> {{$pelicula->descripcion}}</textarea>
-                </div>
-
-                
-
-            </div>
-
-            <br>
-
-            <div class="col">
-                <label  class="form-label texto fuenteFormulario">Duración</label>
-                <input class="form-control btnFondoColor" type="text" class="mb-3"  placeholder="" name="duracion" style="width: 20%" value="{{$pelicula->duracion_minutos}}">
-            </div>
-
-            <br>
-
-            <div class="mb-3">
-                <label for="formFile" class="form-label texto fuenteFormulario">Poster</label>
-                <input class="form-control " type="file" id="formFile" style="width: 30%;" name="poster">
-              </div>
 
             <br>
 
             <div class="">
-                <button type="submit" class="btn boton2" style="width:20%; font-size: 1.5rem;" >Editar</button> 
+                <button type="submit" class="btn boton2" style="width:30%;" > Editar función</button> 
             </div>
 
-            
-
         </form>
-    </div>
-    
+    </section>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 

@@ -32,7 +32,7 @@
                         <a class="nav-link menuTexto" aria-current="page" href='{{route('peliculas.index')}}' style="text-decoration: none;"> <b>Películas</b> </a>
                     </li>
                     <li class="nav-item" style= "padding-right: 10px;">
-                        <a class="nav-link menuTexto activo"  href='{{route('historial')}}' style="text-decoration: none;"> <b>Historial</b> </a>
+                        <a class="nav-link menuTexto activo"  href='{{route('funciones.index')}}' style="text-decoration: none;"> <b>Historial</b> </a>
                     </li>
                     <li class="nav-item dropdown btnFondo" style= "padding-right: 10px;">
                         <a class="nav-link dropdown-toggle menuTexto" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -64,6 +64,20 @@
         <div class="line-1"></div>
 
         <div class="row row-cols-1 row-cols-md-6 " >
+            @foreach ($funciones as $funcion)
+                @foreach ($peliculas as $pelicula)
+                    @if ($pelicula->id == $funcion->id_pelicula)
+                        <div class="col">
+                            <div class="card h-100">
+                                <h4> <b>{{$funcion->fecha}} {{$funcion->hora}}</b></h4>
+                                <a href='{{route('funciones.edit', $funcion->id)}}'> <img src="/storage/posters/{{$pelicula->poster}}" class="card-img-top fotoPelicula" alt="..."> </a>
+
+                            </div>
+                        </div> 
+                    @endif
+                @endforeach
+            @endforeach
+
             <div class="col">
                 <div class="card h-100">
                     <h4> <b>Semana 23-29 Enero</b></h4>

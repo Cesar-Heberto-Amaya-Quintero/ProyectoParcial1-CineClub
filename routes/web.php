@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GenerosController;
 use App\Http\Controllers\PeliculasController;
 use App\Http\Controllers\UsuariosController;
+use App\Http\Controllers\FuncionesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +23,7 @@ Route::get('/', function () {return view('index'); })->name('inicio');;
 
 Route::get('/pelicula', function () { return view('pelicula');})->name('pelicula');;
 
-Route::get('/historial', function () { return view('historial');})->name('historial');;
+// Route::get('/historial', function () { return view('historial');})->name('historial');;
 
 Route::get('/agregarPelicula', function () { return view('agregarPelicula');})->name('agregarPelicula');;
 
@@ -51,3 +52,8 @@ Route::post('/generos', [GenerosController::class, 'store'])->name('generos.stor
 Route::get('/generos/{id}/edit', [GenerosController::class, 'edit'])->name('generos.edit');
 Route::put('/generos/{id}/edit', [GenerosController::class, 'update'])->name('generos.update');
 Route::put('/generos/{id}', [GenerosController::class, 'destroy'])->name('generos.destroy');
+
+//Funciones
+Route::get('/historial', [FuncionesController::class, 'index'])->name('funciones.index');
+Route::post('/pelicula/{id}', [FuncionesController::class, 'store'])->name('funciones.store');
+Route::get('/funciones/{id}/edit', [FuncionesController::class, 'edit'])->name('funciones.edit');

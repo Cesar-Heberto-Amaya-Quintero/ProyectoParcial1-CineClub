@@ -33,7 +33,7 @@
                         <a class="nav-link menuTexto activo" aria-current="page" href='{{route('peliculas.index')}}' style="text-decoration: none;"> <b>Películas</b> </a>
                     </li>
                     <li class="nav-item" style= "padding-right: 10px;">
-                        <a class="nav-link menuTexto"  href='{{route('historial')}}' style="text-decoration: none;"> <b>Historial</b> </a>
+                        <a class="nav-link menuTexto"  href='{{route('funciones.index')}}' style="text-decoration: none;"> <b>Historial</b> </a>
                     </li>
                     <li class="nav-item dropdown btnFondo" style= "padding-right: 10px;">
                         <a class="nav-link dropdown-toggle menuTexto" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -86,31 +86,32 @@
 
         <br>
 
-        <form>
+        <form method="POST" href="{{route('funciones.store',$pelicula->id)}}" enctype="multipart/form-data">
+            @csrf
             <h1 class="texto">Establecer función</h1>
             <div class="line-2"></div>
 
             <div class="row row-cols-1 row-cols-md-3 formulario" >
                 <div class="col">
                     <label  class="form-label texto fuenteLabel">Sala</label>
-                    <input type="" class="mb-3"  placeholder="">
+                    <input type="" class="mb-3"  placeholder="" name="sala">
                 </div>
 
                 <div class="col">
                     <label  class="form-label texto fuenteLabel">Fecha</label>
-                    <input type="date" class="mb-3"  placeholder="">
+                    <input type="date" class="mb-3"  placeholder="" name="fecha">
                 </div>
 
                 <div class="col">
                     <label  class="form-label texto fuenteLabel">Hora</label>
-                    <input type="datetime" class="mb-3"  placeholder="">
+                    <input type="datetime" class="mb-3"  placeholder="" name="hora">
                 </div>
             </div>
 
             <br>
 
             <div class="">
-                <button type="button" class="btn boton2" style="width:30%;" > Establecer función</button> 
+                <button type="submit" class="btn boton2" style="width:30%;" > Establecer función</button> 
             </div>
 
         </form>
