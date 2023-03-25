@@ -40,6 +40,8 @@
                             <b>César</b> 
                         </a>
                         <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href='{{route('usuarios.create')}}' >Crear usuario</a></li>
+                            <li><a class="dropdown-item" href='{{route('usuarios.edit', 1)}}' >Editar usuario</a></li>
                             <li><a class="dropdown-item" href='{{route('inicio')}}'>Cerrar sesión</a></li>
                         </ul>
                     </li>

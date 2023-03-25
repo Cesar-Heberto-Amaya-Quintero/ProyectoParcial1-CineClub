@@ -40,6 +40,8 @@
                             <b>César</b> 
                         </a>
                         <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href='{{route('usuarios.create')}}' >Crear usuario</a></li>
+                            <li><a class="dropdown-item" href='{{route('usuarios.edit', 1)}}' >Editar usuario</a></li>
                             <li><a class="dropdown-item" href='{{route('inicio')}}' >Cerrar sesión</a></li>
                         </ul>
                     </li>
@@ -49,9 +51,12 @@
     </nav>
 
     <div class = "container-fluid contenido " >
+        @if(Session::has('exito'))
+            <h5> <b> {{Session::get('exito')}} </b> </h5>
+        @endif
         <div class="row"> 
             <div class="col"> 
-                <h2> Acción </h2>
+                <h1> Peliculas </h1>
             </div>
             <div class="col" style="display: flex; align-items: center; justify-content: right;"> 
                 <a style="padding-right: 10px; text-decoration: none; color: #0a0b18; " href='{{route('generos.index')}}'> <u>Agregar género</u> </a>
@@ -61,95 +66,51 @@
 
         </div>
         
-        <div class="line-1"></div>
-
         
+        
+        @foreach ($generos as $genero)
+
+            <h2> {{$genero->nombre}} </h2>
+            <div class="line-1"></div>
+
+            <div class="row row-cols-1 row-cols-md-6 " >
+            @foreach ($peliculas as $pelicula)
+                @foreach ($generosPelicula as $generoPelicula)
+                    
+                        @if ($generoPelicula->id_genero == $genero->id && $generoPelicula->id_pelicula == $pelicula->id)
+                            @if ($pelicula->activo == 1)
+                                <div class="col">
+                                    <div class="card h-100">
+                                    <a href='{{route('peliculas.pelicula', $pelicula->id)}}'> <img src="/storage/posters/{{$pelicula->poster}}" class="card-img-top fotoPelicula" alt="..."> </a>
+
+                                    </div>
+                                </div>
+                            @endif
+                        @endif
+                   
+                @endforeach
+                
+            @endforeach
+             </div>
+        @endforeach        
+        
+
 
         <div class="row row-cols-1 row-cols-md-6 " >
             @foreach ($peliculas as $pelicula)
-                <div class="col">
-                    <div class="card h-100">
-                    <a href='{{route('peliculas.pelicula', $pelicula->id)}}'> <img src="/storage/posters/{{$pelicula->poster}}" class="card-img-top fotoPelicula" alt="..."> </a>
+                @if ($pelicula->activo == 1)
+                    <div class="col">
+                        <div class="card h-100">
+                        <a href='{{route('peliculas.pelicula', $pelicula->id)}}'> <img src="/storage/posters/{{$pelicula->poster}}" class="card-img-top fotoPelicula" alt="..."> </a>
 
+                        </div>
                     </div>
-                </div>
-            
+                @endif
             @endforeach
-            <div class="col">
-                <div class="card h-100">
-                <img src="/assets/pelicula2.jpg" class="card-img-top fotoPelicula" alt="...">
 
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100">
-                <img src="/assets/pelicula3.jpg" class="card-img-top fotoPelicula" alt="...">
-
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100">
-                <img src="/assets/pelicula4.jpg" class="card-img-top fotoPelicula" alt="...">
-
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100">
-                <img src="/assets/pelicula5.jpg" class="card-img-top fotoPelicula" alt="...">
-
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100">
-                <img src="/assets/pelicula6.jpg" class="card-img-top fotoPelicula" alt="...">
-
-                </div>
-            </div>
 
         </div>
 
-        <h2> Drama </h2>
-        <div class="line-1"></div>
-
-        <div class="row row-cols-1 row-cols-md-6 " >
-            <div class="col">
-                <div class="card h-100">
-                <img src="/assets/pelicula7.jpg" class="card-img-top fotoPelicula" alt="...">
-
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100">
-                <img src="/assets/pelicula8.jpg" class="card-img-top fotoPelicula" alt="...">
-
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100">
-                <img src="/assets/pelicula9.jpg" class="card-img-top fotoPelicula" alt="...">
-
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100">
-                <img src="/assets/pelicula10.jpg" class="card-img-top fotoPelicula" alt="...">
-
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100">
-                <img src="/assets/pelicula11.jpg" class="card-img-top fotoPelicula" alt="...">
-
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100">
-                <img src="/assets/pelicula12.jpg" class="card-img-top fotoPelicula" alt="...">
-
-                </div>
-            </div>
-
-        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GenerosController;
 use App\Http\Controllers\PeliculasController;
+use App\Http\Controllers\UsuariosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,8 +34,19 @@ Route::get('/pelicula/{id}', [PeliculasController::class, 'pelicula'])->name('pe
 Route::get('/peliculas/create', [PeliculasController::class, 'create'])->name('peliculas.create');
 Route::post('/peliculas/create', [PeliculasController::class, 'store'])->name('peliculas.store');
 Route::get('/peliculas/{id}/edit', [PeliculasController::class, 'edit'])->name('peliculas.edit');
-Route::put('/peliculas/{id}', [PeliculasController::class, 'update'])->name('pelliculas.update');
+Route::put('/peliculas/{id}/edit', [PeliculasController::class, 'update'])->name('peliculas.update');
+Route::put('/peliculas/{id}', [PeliculasController::class, 'destroy'])->name('peliculas.destroy');
+
+//Usuarios
+Route::get('/usuarios/create', [UsuariosController::class, 'index'])->name('usuarios.create');
+Route::post('/usuarios/create', [UsuariosController::class, 'store'])->name('usuarios.store');
+Route::get('/usuarios/{id}/edit', [UsuariosController::class, 'edit'])->name('usuarios.edit');
+Route::put('/usuarios/{id}/edit', [UsuariosController::class, 'update'])->name('usuarios.update');
+
 
 //Generos
 Route::get('/generos', [GenerosController::class, 'index'])->name('generos.index');
 Route::post('/generos', [GenerosController::class, 'store'])->name('generos.store');
+Route::get('/generos/{id}/edit', [GenerosController::class, 'edit'])->name('generos.edit');
+Route::put('/generos/{id}/edit', [GenerosController::class, 'update'])->name('generos.update');
+Route::put('/generos/{id}', [GenerosController::class, 'destroy'])->name('generos.destroy');

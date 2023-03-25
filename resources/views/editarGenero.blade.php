@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="/css/menu.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="/css/pelicula.css" media="screen" /> 
+    <link rel="stylesheet" type="text/css" href="/css/pelicula.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/css/agregarPelicula.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/css/generos.css" media="screen" /> 
 
     {{-- Importados --}}
         
@@ -18,7 +20,7 @@
 
     <link rel="stylesheet" href="\css\Carrusel\lightbox.css">
 
-    <title>Pelicula</title>
+    <title>Género</title>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg -tertiary menuColor">
@@ -50,72 +52,37 @@
             </div>
         </div>
     </nav>
+
     <!-- {{-- Contenido --}} -->
+    <div class="contenidoForm" style="padding: 1%;">
 
-    <section class= "left-form"> 
+        @if(Session::has('exito'))
+            <h5> <b> {{Session::get('exito')}} </b> </h5>
+        @endif
 
-            <div class="imagen">
-                <img src="/storage/posters/{{$pelicula->poster}}" class="card-img-top pelicula" alt="...">
-            </div>
-
-    </section>
-
-        <section class= "right-form ">
-        <h1 class="texto titulo">{{$pelicula->titulo}} {{$pelicula->ano}}   </h1>
-        <div class="descripcion">
-            <span class="mb-4 descripcion" >{{$pelicula->descripcion}} </span>
+        <div class="">
+                <button type="" class="btn boton2" style="width:10%; font-size: 1rem; float: right;"> <a href="{{route('generos.index')}}" style="text-decoration: none; color: #fff; "> Volver </a></button> 
         </div>
 
-        <br>
+        <h2 class="textoo" >Editar género</h2> 
+        <div class="line-3"></div>
 
-        <h5> <b>Director:</b> {{$pelicula->director}}</h5>
-
-        <h5> <b>Géneros:</b>  {{$pelicula->generos}} </h5>
-
-        <br>
-
-        <form action="{{route('peliculas.destroy', $pelicula->id)}}" method="POST">
+        <form action="{{route('generos.update', $genero->id)}}" method="POST">
         @csrf
         @method('PUT')
-
-            <div class="">
-                <button type="button" class="btn boton2" style="width:20%;" > <a href="{{route('peliculas.edit', $pelicula->id)}} " style="text-decoration: none; color: #fff; "> Editar pelicula </a></button> 
-                <button type="submit" class="btn  btn-danger" style="width:20%; font-size:20px;" > Eliminar pelicula </button> 
+            <div class="col" style="display: flex; align-items: center;"> 
+                <input class="form-control btnFondoColor mb-3" type="text" name="nombre"   style="width: 30%; margin-right: 1%;" value="{{$genero->nombre}}">
+                <button type="submit" class="btn boton2"  style="width: 15%; ">Editar</button>
             </div>
         </form>
 
-        <br>
 
-        <form>
-            <h1 class="texto">Establecer función</h1>
-            <div class="line-2"></div>
-
-            <div class="row row-cols-1 row-cols-md-3 formulario" >
-                <div class="col">
-                    <label  class="form-label texto fuenteLabel">Sala</label>
-                    <input type="" class="mb-3"  placeholder="">
-                </div>
-
-                <div class="col">
-                    <label  class="form-label texto fuenteLabel">Fecha</label>
-                    <input type="date" class="mb-3"  placeholder="">
-                </div>
-
-                <div class="col">
-                    <label  class="form-label texto fuenteLabel">Hora</label>
-                    <input type="datetime" class="mb-3"  placeholder="">
-                </div>
-            </div>
-
-            <br>
-
-            <div class="">
-                <button type="button" class="btn boton2" style="width:30%;" > Establecer función</button> 
-            </div>
-
+        <form action="{{route('generos.destroy', $genero->id)}}" method="POST">
+        @csrf
+        @method('PUT')
+            <button type="" class="btn boton2"  style="width: 15%; " >Eliminar</button>
+        
         </form>
-    </section>
-
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 

@@ -43,6 +43,8 @@
                             <b>César</b> 
                         </a>
                         <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href='{{route('usuarios.create')}}' >Crear usuario</a></li>
+                            <li><a class="dropdown-item" href='{{route('usuarios.edit', 1)}}' >Editar usuario</a></li>
                             <li><a class="dropdown-item" href='{{route('inicio')}}'>Cerrar sesión</a></li>
                         </ul>
                     </li>
@@ -54,25 +56,35 @@
     <!-- {{-- Contenido --}} -->
     <div class="contenidoForm" style="padding: 1%;">
 
-        <form method="POST" href="" enctype="multipart/form-data">
+        <div class="">
+                <button type="" class="btn boton2" style="width:10%; font-size: 1rem; float: right;"> <a href="{{route('peliculas.pelicula', $pelicula->id)}}" style="text-decoration: none; color: #fff; "> Volver </a></button> 
+        </div>
+
+        <form method="POST" href="{{route('peliculas.update', $pelicula->id)}}" enctype="multipart/form-data">
             @csrf
+            @method('PUT')
             <h1 class="texto" >Editar Pelicula</h1>
             <div class="line-3"></div>
+
+
+            @if(Session::has('exito'))
+                <h5> <b> {{Session::get('exito')}} </b> </h5>
+            @endif
 
             <div class="row row-cols-1 row-cols-md-3" >
                 <div class="col">
                     <label  class="form-label texto fuenteFormulario">Titulo</label>
-                    <input class="form-control btnFondoColor" type="text" class="mb-3"  placeholder="" name="titulo">
+                    <input class="form-control btnFondoColor" type="text" class="mb-3"  placeholder="" name="titulo" value="{{$pelicula->titulo}}"> 
                 </div>
 
                 <div class="col">
                     <label  class="form-label texto fuenteFormulario">Director</label>
-                    <input class="form-control btnFondoColor" type="text" class="mb-3"  placeholder="" name="director">
+                    <input class="form-control btnFondoColor" type="text" class="mb-3"  value="{{$pelicula->director}}" name="director">
                 </div>
 
                 <div class="col">
                     <label  class="form-label texto fuenteFormulario">Año</label>
-                    <input  class="form-control btnFondoColor" type="text" class="mb-3"  placeholder="" name="ano">
+                    <input  class="form-control btnFondoColor" type="text" class="mb-3"  value="{{$pelicula->ano}}" name="ano">
                 </div>
             </div>
 
@@ -81,28 +93,18 @@
             <div class="row row-cols-1 row-cols-md-2 " >
                 <div class="col">
                     <label  class="form-label texto fuenteFormulario">Descripcion</label>
-                    <textarea class="form-control btnFondoColor"  class="mb-3"  rows="5" name="descripcion"> </textarea>
+                    <textarea class="form-control btnFondoColor"  class="mb-3"  rows="5" name="descripcion"> {{$pelicula->descripcion}}</textarea>
                 </div>
 
-                <div class="col">
-                    <div class="row">
-                        <label  class="form-label texto fuenteFormulario">Género</label>
-                    </div>
+                
 
-                    <div class="row">
-                        <div class="col">
-                            @foreach ($generos as $genero)
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input btnFondoColor" type="checkbox" id="inlineCheckbox1" value="{{$genero->id}}" name="generos[]">
-                                    <label class="form-check-label" for="inlineCheckbox1">{{$genero->nombre}}</label>
-                                </div>
-                            @endforeach
-                        </div>
+            </div>
 
-                    </div>
-      
-                </div>
+            <br>
 
+            <div class="col">
+                <label  class="form-label texto fuenteFormulario">Duración</label>
+                <input class="form-control btnFondoColor" type="text" class="mb-3"  placeholder="" name="duracion" style="width: 20%" value="{{$pelicula->duracion_minutos}}">
             </div>
 
             <br>
@@ -117,6 +119,8 @@
             <div class="">
                 <button type="submit" class="btn boton2" style="width:20%; font-size: 1.5rem;" >Editar</button> 
             </div>
+
+            
 
         </form>
     </div>

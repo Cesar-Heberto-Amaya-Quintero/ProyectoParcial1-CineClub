@@ -43,6 +43,8 @@
                             <b>César</b> 
                         </a>
                         <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href='{{route('usuarios.create')}}' >Crear usuario</a></li>
+                            <li><a class="dropdown-item" href='{{route('usuarios.edit', 1)}}' >Editar usuario</a></li>
                             <li><a class="dropdown-item" href='{{route('inicio')}}'>Cerrar sesión</a></li>
                         </ul>
                     </li>
@@ -53,6 +55,10 @@
 
     <!-- {{-- Contenido --}} -->
     <div class="contenidoForm" style="padding: 1%;">
+
+        <div class="">
+                <button type="" class="btn boton2" style="width:10%; font-size: 1rem; float: right;"> <a href="{{route('peliculas.index')}}" style="text-decoration: none; color: #fff; "> Volver </a></button> 
+        </div>
 
         <form method="POST" href="{{route('peliculas.store')}}" enctype="multipart/form-data">
             @csrf
@@ -107,6 +113,13 @@
 
             <br>
 
+            <div class="col">
+                <label  class="form-label texto fuenteFormulario">Duración</label>
+                <input class="form-control btnFondoColor" type="text" class="mb-3"  placeholder="" name="duracion" style="width: 20%">
+            </div>
+
+            <br>
+
             <div class="mb-3">
                 <label for="formFile" class="form-label texto fuenteFormulario">Poster</label>
                 <input class="form-control " type="file" id="formFile" style="width: 30%;" name="poster">
@@ -117,6 +130,8 @@
             <div class="">
                 <button type="submit" class="btn boton2" style="width:20%; font-size: 1.5rem;" >Agregar</button> 
             </div>
+
+            
 
         </form>
     </div>

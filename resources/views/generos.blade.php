@@ -43,6 +43,8 @@
                             <b>César</b> 
                         </a>
                         <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href='{{route('usuarios.create')}}' >Crear usuario</a></li>
+                            <li><a class="dropdown-item" href='{{route('usuarios.edit', 1)}}' >Editar usuario</a></li>
                             <li><a class="dropdown-item" href='{{route('inicio')}}'>Cerrar sesión</a></li>
                         </ul>
                     </li>
@@ -54,6 +56,10 @@
     <!-- {{-- Contenido --}} -->
     <div class="contenidoForm" style="padding: 1%;">
 
+        @if(Session::has('exito'))
+            <h5> <b> {{Session::get('exito')}} </b> </h5>
+        @endif
+
         <h1 class="textoo" >Géneros disponibles</h1>
 
         <br>
@@ -61,44 +67,13 @@
 
         <div class="row row-cols-1 row-cols-md-6" >
             @foreach($generos as $genero)
-            <div class="col">
-                <button class="form-control mb-4 BtnGeneros" type="" placeholder="">{{$genero->nombre}}</button>
-            </div>
+            @if ($genero->activo == 1)
+                <div class="col">
+                    <button class="form-control mb-4 BtnGeneros" type="" placeholder="" > <a href="{{route('generos.edit', $genero->id)}}" style="text-decoration: none; color: #fff; "> {{$genero->nombre}} </a> </button>
+                </div>
+            @endif
             @endforeach
-
-            {{-- <div class="col">
-                <button class="form-control mb-4 BtnGeneros" type="" placeholder=""> Acción</button>
-            </div>
-
-            <div class="col">
-                <button class="form-control mb-4 BtnGeneros" type=""  placeholder="" > Drama</button>
-            </div>
-
-            <div class="col">
-                <button class="form-control mb-4 BtnGeneros" type=""   placeholder="" > Romance</button>
-            </div>
-
-            <div class="col">
-                <button class="form-control mb-4 BtnGeneros" type=""    placeholder="" > Terror</button>
-            </div>
-
-            <div class="col">
-                <button class="form-control mb-4 BtnGeneros" type=""   placeholder="" > Acción</button>
-            </div>
-
-            <div class="col">
-                <button class="form-control mb-4 BtnGeneros" type=""   placeholder="" > Drama</button>
-            </div>
-
-            <div class="col">
-                <button class="form-control mb-4 BtnGeneros" type=""  placeholder="" > Romance</button>
-            </div>
-
-            <div class="col">
-                <button class="form-control mb-4 BtnGeneros" type=""  placeholder="" > Terror</button>
-            </div> --}}
-
-            
+     
         </div>
 
         <br>
