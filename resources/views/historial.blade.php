@@ -32,7 +32,7 @@
                         <a class="nav-link menuTexto" aria-current="page" href='{{route('peliculas.index')}}' style="text-decoration: none;"> <b>Películas</b> </a>
                     </li>
                     <li class="nav-item" style= "padding-right: 10px;">
-                        <a class="nav-link menuTexto activo"  href='{{route('funciones.index')}}' style="text-decoration: none;"> <b>Historial</b> </a>
+                        <a class="nav-link menuTexto activo"  href='{{route('funciones.index')}}' style="text-decoration: none;"> <b>Funciones</b> </a>
                     </li>
                     <li class="nav-item dropdown btnFondo" style= "padding-right: 10px;">
                         <a class="nav-link dropdown-toggle menuTexto" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -63,10 +63,14 @@
         
         <div class="line-1"></div>
 
+        @if(Session::has('exito'))
+            <h5> <b> {{Session::get('exito')}} </b> </h5>
+        @endif
+
         <div class="row row-cols-1 row-cols-md-6 " >
             @foreach ($funciones as $funcion)
                 @foreach ($peliculas as $pelicula)
-                    @if ($pelicula->id == $funcion->id_pelicula)
+                    @if ($pelicula->id == $funcion->id_pelicula && $funcion->activo == 1)
                         <div class="col">
                             <div class="card h-100">
                                 <h4> <b>{{$funcion->fecha}} {{$funcion->hora}}</b></h4>
@@ -78,98 +82,10 @@
                 @endforeach
             @endforeach
 
-            <div class="col">
-                <div class="card h-100">
-                    <h4> <b>Semana 23-29 Enero</b></h4>
-                    <img src="/assets/pelicula1.jpg" class="card-img-top fotoPelicula" alt="...">
-
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100">
-                    <h4> <b>Semana 30-05 Febrero</b></h4>
-                    <img src="/assets/pelicula2.jpg" class="card-img-top fotoPelicula" alt="...">
-
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100">
-                    <h4> <b>Semana 06-12 Febrero</b></h4>
-                    <img src="/assets/pelicula3.jpg" class="card-img-top fotoPelicula" alt="...">
-
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100">
-                    <h4> <b>Semana 13-19 Febrero</b></h4>
-                    <img src="/assets/pelicula4.jpg" class="card-img-top fotoPelicula" alt="...">
-
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100">
-                    <h4> <b>Semana 20-26 Febrero</b></h4>
-                    <img src="/assets/pelicula5.jpg" class="card-img-top fotoPelicula" alt="...">
-
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100">
-                    <h4> <b>Semana 27-06 Marzo</b></h4>
-                    <img src="/assets/pelicula6.jpg" class="card-img-top fotoPelicula" alt="...">
-
-                </div>
-            </div>
 
         </div>
 
         <br>
-
-        <div class="row row-cols-1 row-cols-md-6 " >
-            <div class="col">
-                <div class="card h-100">
-                    <h4> <b>Semana 23-29 Enero</b></h4>
-                    <img src="/assets/pelicula7.jpg" class="card-img-top fotoPelicula" alt="...">
-
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100">
-                    <h4> <b>Semana 30-05 Febrero</b></h4>
-                    <img src="/assets/pelicula8.jpg" class="card-img-top fotoPelicula" alt="...">
-
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100">
-                    <h4> <b>Semana 06-12 Febrero</b></h4>
-                    <img src="/assets/pelicula9.jpg" class="card-img-top fotoPelicula" alt="...">
-
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100">
-                    <h4> <b>Semana 13-19 Febrero</b></h4>
-                    <img src="/assets/pelicula10.jpg" class="card-img-top fotoPelicula" alt="...">
-
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100">
-                    <h4> <b>Semana 20-26 Febrero</b></h4>
-                    <img src="/assets/pelicula11.jpg" class="card-img-top fotoPelicula" alt="...">
-
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100">
-                    <h4> <b>Semana 27-06 Marzo</b></h4>
-                    <img src="/assets/pelicula12.jpg" class="card-img-top fotoPelicula" alt="...">
-
-                </div>
-            </div>
-
-        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>

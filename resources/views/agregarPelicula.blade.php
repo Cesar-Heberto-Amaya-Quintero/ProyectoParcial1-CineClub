@@ -35,7 +35,7 @@
                         <a class="nav-link menuTexto activo" aria-current="page" href='{{route('peliculas.index')}}' style="text-decoration: none;"> <b>Películas</b> </a>
                     </li>
                     <li class="nav-item" style= "padding-right: 10px;">
-                        <a class="nav-link menuTexto"  href='{{route('funciones.index')}}' style="text-decoration: none;"> <b>Historial</b> </a>
+                        <a class="nav-link menuTexto"  href='{{route('funciones.index')}}' style="text-decoration: none;"> <b>Funciones</b> </a>
                     </li>
                     <li class="nav-item dropdown btnFondo" style= "padding-right: 10px;">
                         <a class="nav-link dropdown-toggle menuTexto" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -98,10 +98,12 @@
                     <div class="row">
                         <div class="col">
                             @foreach ($generos as $genero)
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input btnFondoColor" type="checkbox" id="inlineCheckbox1" value="{{$genero->id}}" name="generos[]">
-                                    <label class="form-check-label" for="inlineCheckbox1">{{$genero->nombre}}</label>
-                                </div>
+                                @if($genero->activo == 1)
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input btnFondoColor" type="checkbox" id="inlineCheckbox1" value="{{$genero->id}}" name="generos[]">
+                                        <label class="form-check-label" for="inlineCheckbox1">{{$genero->nombre}}</label>
+                                    </div>
+                                @endif
                             @endforeach
                         </div>
 

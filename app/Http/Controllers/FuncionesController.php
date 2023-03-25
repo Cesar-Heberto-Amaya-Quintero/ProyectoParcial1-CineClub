@@ -46,4 +46,28 @@ class FuncionesController extends Controller
         $argumentos['pelicula'] = $pelicula;
         return view('editarFuncion', $argumentos);
     }
+
+    public function update(Request $request, $id) {
+        $funcion = Funcion::find($id);
+        if($funcion) {
+
+            $funcion->sala = $request->input('sala');
+            $funcion->fecha = $request->input('fecha');
+            $funcion->hora = $request->input('hora');
+
+            $funcion->save();
+
+            return redirect()->route('funciones.edit', $id)->with('exito', "Se actualizó la función exitosamente");
+        }
+
+        return redirect()->route('funciones.index')->with('error', "No se encontró la función $id");
+        
+    }
+
+    public function destroy(Request $request, $id) {
+        $funcion = Funcion::find($id);
+        $funcion->activo = 0;
+        $funcion->save();
+        return redirect()->route('funciones.index')->with('exito', "Se eliminó la función exitosamente");
+    }
 }

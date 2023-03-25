@@ -32,7 +32,7 @@
                         <a class="nav-link menuTexto activo" aria-current="page" href='{{route('peliculas.index')}}' style="text-decoration: none;"> <b>Películas</b> </a>
                     </li>
                     <li class="nav-item" style= "padding-right: 10px;">
-                        <a class="nav-link menuTexto"  href='{{route('funciones.index')}}' style="text-decoration: none;"> <b>Historial</b> </a>
+                        <a class="nav-link menuTexto"  href='{{route('funciones.index')}}' style="text-decoration: none;"> <b>Funciones</b> </a>
                     </li>
                     <li class="nav-item dropdown btnFondo" style= "padding-right: 10px;">
                         <a class="nav-link dropdown-toggle menuTexto" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -69,29 +69,30 @@
         
         
         @foreach ($generos as $genero)
+            @if ($genero->activo == 1)
+                <h2> {{$genero->nombre}} </h2>
+                <div class="line-1"></div>
 
-            <h2> {{$genero->nombre}} </h2>
-            <div class="line-1"></div>
+                <div class="row row-cols-1 row-cols-md-6 " >
+                    @foreach ($peliculas as $pelicula)
+                        @foreach ($generosPelicula as $generoPelicula)
+                            
+                                @if ($generoPelicula->id_genero == $genero->id && $generoPelicula->id_pelicula == $pelicula->id)
+                                    @if ($pelicula->activo == 1)
+                                        <div class="col">
+                                            <div class="card h-100">
+                                            <a href='{{route('peliculas.pelicula', $pelicula->id)}}'> <img src="/storage/posters/{{$pelicula->poster}}" class="card-img-top fotoPelicula" alt="..."> </a>
 
-            <div class="row row-cols-1 row-cols-md-6 " >
-            @foreach ($peliculas as $pelicula)
-                @foreach ($generosPelicula as $generoPelicula)
-                    
-                        @if ($generoPelicula->id_genero == $genero->id && $generoPelicula->id_pelicula == $pelicula->id)
-                            @if ($pelicula->activo == 1)
-                                <div class="col">
-                                    <div class="card h-100">
-                                    <a href='{{route('peliculas.pelicula', $pelicula->id)}}'> <img src="/storage/posters/{{$pelicula->poster}}" class="card-img-top fotoPelicula" alt="..."> </a>
-
-                                    </div>
-                                </div>
-                            @endif
-                        @endif
-                   
-                @endforeach
-                
-            @endforeach
-             </div>
+                                            </div>
+                                        </div>
+                                    @endif
+                                @endif
+                        
+                        @endforeach
+                        
+                    @endforeach
+                </div>
+             @endif
         @endforeach        
         
 

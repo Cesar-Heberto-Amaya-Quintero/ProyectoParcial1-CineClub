@@ -26,7 +26,7 @@ class PeliculasController extends Controller
         foreach($generosPelicula as $generoPelicula)
         {
             $genero = Genero::find($generoPelicula);
-            $pelicula->generos .= $genero->nombre . ", ";
+            $pelicula->generos .= $genero->nombre . ". ";
         }
         $argumentos['pelicula'] = $pelicula;
         return view("pelicula", $argumentos);

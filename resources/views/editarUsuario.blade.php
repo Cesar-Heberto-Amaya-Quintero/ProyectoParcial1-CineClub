@@ -35,7 +35,7 @@
                         <a class="nav-link menuTexto activo" aria-current="page" href='{{route('peliculas.index')}}' style="text-decoration: none;"> <b>Películas</b> </a>
                     </li>
                     <li class="nav-item" style= "padding-right: 10px;">
-                        <a class="nav-link menuTexto"  href='{{route('funciones.index')}}' style="text-decoration: none;"> <b>Historial</b> </a>
+                        <a class="nav-link menuTexto"  href='{{route('funciones.index')}}' style="text-decoration: none;"> <b>Funciones</b> </a>
                     </li>
                     <li class="nav-item dropdown btnFondo" style= "padding-right: 10px;">
                         <a class="nav-link dropdown-toggle menuTexto" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -83,7 +83,7 @@
 
                 <div class="col">
                     <label  class="form-label texto fuenteFormulario">Contraseña</label>
-                    <input  class="form-control btnFondoColor" type="password" class="mb-3"  placeholder="" name="contrasena">
+                    <input  class="form-control btnFondoColor" type="password" class="mb-3"  placeholder="" name="contrasena" value= "{{$usuario->contrasena}}">
                 </div>
             </div>
 
@@ -98,19 +98,16 @@
             <br>
 
             <div class="">
-                <button type="submit" class="btn boton2" style="width:20%; font-size: 1.5rem;" >Editar</button>
-                <form action="{{route('usuarios.destroy', $usuario->id)}}" method="POST">
-                @csrf
-                @method('PUT')
-                    <button type="" class="btn btn-danger"  style="width: 15%; font-size: 1.5rem;" >Eliminar</button>
-                
-                </form>
+                <button type="submit" class="btn boton2" style="width:15%; font-size: 1.5rem;" >Editar</button>
             </div>
 
-            
-
-            
-
+        </form>
+        <br>
+        <form action="{{route('usuarios.destroy', $usuario->id)}}" method="POST">
+        @csrf
+        @method('PUT')
+            <button type="" class="btn btn-danger"  style="width: 15%; font-size: 1.5rem;" >Eliminar</button>
+        
         </form>
     </div>
     

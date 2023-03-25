@@ -30,10 +30,10 @@
             <div class="navbar menu" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item" style= "padding-right: 10px;">
-                        <a class="nav-link menuTexto activo" aria-current="page" href='{{route('peliculas.index')}}' style="text-decoration: none;"> <b>Películas</b> </a>
+                        <a class="nav-link menuTexto" aria-current="page" href='{{route('peliculas.index')}}' style="text-decoration: none;"> <b>Películas</b> </a>
                     </li>
                     <li class="nav-item" style= "padding-right: 10px;">
-                        <a class="nav-link menuTexto"  href='{{route('funciones.index')}}' style="text-decoration: none;"> <b>Historial</b> </a>
+                        <a class="nav-link menuTexto activo"  href='{{route('funciones.index')}}' style="text-decoration: none;"> <b>Funciones</b> </a>
                     </li>
                     <li class="nav-item dropdown btnFondo" style= "padding-right: 10px;">
                         <a class="nav-link dropdown-toggle menuTexto" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -65,10 +65,15 @@
         <br>
         <br>
 
-        <form method="POST" href="{{route('funciones.update',$pelicula->id)}}" enctype="multipart/form-data">
+        <form method="POST" href="{{route('funciones.update',$funcion->id)}}" enctype="multipart/form-data">
             @csrf
+            @method('PUT')
             <h1 class="texto">Editar función</h1>
             <div class="line-2"></div>
+
+            @if(Session::has('exito'))
+                <h5> <b> {{Session::get('exito')}} </b> </h5>
+            @endif
 
             <div class="row row-cols-1 row-cols-md-3 formulario" >
                 <div class="col">
@@ -90,9 +95,19 @@
             <br>
 
             <div class="">
-                <button type="submit" class="btn boton2" style="width:30%;" > Editar función</button> 
+                <button type="submit" class="btn boton2" style="width:20%;" > Editar función</button> 
+
             </div>
 
+        </form>
+
+        <br>
+
+        <form action="{{route('funciones.destroy', $funcion->id)}}" method="POST">
+        @csrf
+        @method('PUT')
+            <button type="submit" class="btn btn-danger"  style="width: 20%; font-size:20px;" >Eliminar</button>
+        
         </form>
     </section>
 

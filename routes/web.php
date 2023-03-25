@@ -57,3 +57,5 @@ Route::put('/generos/{id}', [GenerosController::class, 'destroy'])->name('genero
 Route::get('/historial', [FuncionesController::class, 'index'])->name('funciones.index');
 Route::post('/pelicula/{id}', [FuncionesController::class, 'store'])->name('funciones.store');
 Route::get('/funciones/{id}/edit', [FuncionesController::class, 'edit'])->name('funciones.edit');
+Route::put('/funciones/{id}/edit', [FuncionesController::class, 'update'])->name('funciones.update');
+Route::put('/funciones/{id}', [FuncionesController::class, 'destroy'])->name('funciones.destroy');
