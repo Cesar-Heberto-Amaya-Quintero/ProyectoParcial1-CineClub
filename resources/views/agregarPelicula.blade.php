@@ -116,7 +116,7 @@
             <br>
 
             <div class="col">
-                <label  class="form-label texto fuenteFormulario">Duración</label>
+                <label  class="form-label texto fuenteFormulario">Duración en minutos</label>
                 <input class="form-control btnFondoColor" type="text" class="mb-3"  placeholder="" name="duracion" style="width: 20%">
             </div>
 
