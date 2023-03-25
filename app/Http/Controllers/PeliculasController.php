@@ -107,7 +107,7 @@ class PeliculasController extends Controller
         $pelicula->activo = 0;
         $pelicula->save();
 
-        return redirect()->route('peliculas.index', $id)->with('exito', "Se eliminó la pelicula exitosamente");
+        return redirect()->route('peliculas.index')->with('exito', "Se eliminó la pelicula exitosamente");
 
     }
 }

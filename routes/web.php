@@ -42,6 +42,7 @@ Route::get('/usuarios/create', [UsuariosController::class, 'index'])->name('usua
 Route::post('/usuarios/create', [UsuariosController::class, 'store'])->name('usuarios.store');
 Route::get('/usuarios/{id}/edit', [UsuariosController::class, 'edit'])->name('usuarios.edit');
 Route::put('/usuarios/{id}/edit', [UsuariosController::class, 'update'])->name('usuarios.update');
+Route::put('/usuarios/{id}', [UsuariosController::class, 'destroy'])->name('usuarios.destroy');
 
 
 //Generos

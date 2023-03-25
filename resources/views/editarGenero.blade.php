@@ -80,7 +80,7 @@
         <form action="{{route('generos.destroy', $genero->id)}}" method="POST">
         @csrf
         @method('PUT')
-            <button type="" class="btn boton2"  style="width: 15%; " >Eliminar</button>
+            <button type="" class="btn btn-danger"  style="width: 15%; " >Eliminar</button>
         
         </form>
 

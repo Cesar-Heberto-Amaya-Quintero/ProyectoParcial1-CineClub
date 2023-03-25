@@ -59,4 +59,13 @@ class UsuariosController extends Controller
         return redirect()->route('usuarios.index')->with('error', "No se encontró usuario $id");
         
     }
+
+    public function destroy(Request $request, $id) {
+        $usuario = Usuario::find($id);
+        $usuario->activo = 0;
+        $usuario->save();
+
+        return redirect()->route('peliculas.index')->with('exito', "Se eliminó el usuario exitosamente");
+
+    }
 }

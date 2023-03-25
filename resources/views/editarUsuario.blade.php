@@ -98,8 +98,16 @@
             <br>
 
             <div class="">
-                <button type="submit" class="btn boton2" style="width:20%; font-size: 1.5rem;" >Editar</button> 
+                <button type="submit" class="btn boton2" style="width:20%; font-size: 1.5rem;" >Editar</button>
+                <form action="{{route('usuarios.destroy', $usuario->id)}}" method="POST">
+                @csrf
+                @method('PUT')
+                    <button type="" class="btn btn-danger"  style="width: 15%; font-size: 1.5rem;" >Eliminar</button>
+                
+                </form>
             </div>
+
+            
 
             
 
